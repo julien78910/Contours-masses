@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="app">
+
+<head>
+
+  	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  	<title>Contours & Masses</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <script src="js/galerie.js"></script>
+
+</head>
+
+<body id="galerie" ng-controller="appController">
+
+	<div id="container">
+
+
+<div class="test"></div>
+		<h5>galerie</h5>
+		<a href="index.html"><img class="galerie-home" src="img/outils/home.png"></a>
+
+
+		<ul id="grille-galerie">
+
+			<li>
+			<h6>piggy bank</h6>
+
+				<div class="tirelire-galerie">
+					<img src="img/galerie/tirelire-galerie.png"></img>
+
+				</div>
+			</li>
+
+					<li><h6>luckytoad</h6><div class="vase-galerie"><img src="img/galerie/vase-galerie.png"></img></div>
+
+			</li>
+
+					<li><h6>teapot</h6><div class="theiere-galerie"><img src="img/galerie/theiere-galerie.png"></img></div>
+
+			</li>
+
+	</ul>
+		<ul id="grille-galerie2">
+			<li ng-repeat="img in data.img">
+        <img ng-src="{{img}}"/>
+			</li>
+
+
+		</ul>
+
+	</div>
+
+</body>
+
+
+
+
+
+  <script src="js/utils.js"></script>
+
+  <script src="js/store.js"></script>
+
+  <script src="js/breadth_first.js"></script>
+
+  <script src="js/watercolor.js"></script>
+
+  <script src="js/effect.js"></script>
+
+  <script src="js/contour_mass.js"></script>
+
+  <script src="js/orientation_effect.js"></script>
+
+  <script src="js/blow_effect.js"></script>
+
+  <script src="js/sound_effect.js"></script>
+
+  <script src="js/main.js"></script>
+
+</html>

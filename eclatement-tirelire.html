@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <title>Contours & Masses</title>
+
+
+
+
+
+    <script src="js/three.min.js"></script>
+
+    <script src="js/gyro.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+
+
+
+
+</head>
+
+<body id="eclatement-tirelire">
+
+  <div id="container">
+
+
+
+
+
+    <div id="mainDiv" style="width: 100%; height: 100%; position:absolute">
+            <img class="img-objet" src="img/img-eclatement/tirelire.png"/>
+    </div>
+
+
+
+  <article id="masquer-info-outils" class="info-outils">
+
+  </article>
+
+
+
+
+
+  <ul class="outils" id="outils1">
+    <button type="button" onclick="chooseTool(3)"><span id="info-outils-un" onClick="changeText('info-outils-un');" ></span></button> <!--brosse-->
+    <button type="button" onclick="chooseTool(0)"><span id="info-outils-deux" onClick="changeText('info-outils-deux');" ></span></button> <!--orientation -->
+    <button type="button" onclick="chooseTool(1)"><span id="info-outils-trois" onClick="changeText('info-outils-trois');" ></span></button> <!--son-->
+    <button type="button" onclick="chooseTool(2)"><span id="info-outils-quatre" onClick="changeText('info-outils-quatre');" ></span></button> <!--souffle-->
+    <button type="button" onclick="apparition_div('masquer');"><span onclick="masquer_div('masquer-info-outils');"><img src="img/outils/validation.png"></img></span></button> <!--validation -->
+    <button type="button" onclick="back()"><img src="img/outils/retour-arriere.png"></img></button> <!--annuler -->
+    <button type="button"><a href="index.html"><img src="img/outils/home.png"></a></img></button> <!--home -->
+  </ul>
+
+  <ul class="outils" id="outils2">
+    <button type="button" onclick="chooseTool(3)"><span id="info-outils-un" onClick="changeText('info-outils-un');" ></span></button> <!--brosse-->
+    <button type="button" onclick="chooseTool(0)"><span id="info-outils-deux" onClick="changeText('info-outils-deux');" ></span></button> <!--orientation -->
+    <button type="button" onclick="chooseTool(1)"><span id="info-outils-trois" onClick="changeText('info-outils-trois');" ></span></button> <!--son-->
+    <button type="button" onclick="chooseTool(2)"><span id="info-outils-quatre" onClick="changeText('info-outils-quatre');" ></span></button> <!--souffle-->
+    <button type="button" onclick="apparition_div('masquer');"><span onclick="masquer_div('masquer-info-outils');"><img src="img/outils/validation.png"></img></span></button> <!--validation -->
+    <button type="button" onclick="back()"><img src="img/outils/retour-arriere.png"></img></button> <!--annuler -->
+    <button type="button"><a href="index.html"><img src="img/outils/home.png"></a></img></button> <!--home -->
+  </ul>
+
+
+  <article id="article" onclick="masquer_div('outils1')">
+
+    <span onclick="masquer_div('article')";>
+
+    <span onclick="apparition_div('outils2')">
+
+    <h3>règles du jeu</h3>
+
+    <p>Repassez les contours sans les relier </p>
+
+    <p>à l’aide des <span class="outils-numerique green">outils numeriques.</span></p>
+
+    <p>Ils produisent tous un effet différent,</p>
+
+    <p>à vous de les découvrir !</p>
+
+   <p>Valider quand vous le voulez. </p>
+
+    <div id="A-VOUS" onclick="start()">à vous de jouer</div>
+
+  </span>
+  </span>
+
+  </article>
+
+
+
+
+
+    <article id="masquer" onclick="apparition_div('lien-galerie');" >
+
+      <span onclick="masquer_div('outils2');">
+
+        <h3>Félicitations ! </h3>
+
+        <p>Vous avez réalisé des masses, textures </p>
+
+        <p>et couleurs, en oubliant le contour </p>
+
+        <p>de cet objet au profit d'une forme pleine. </p>
+
+        <p> Cette démarche est proche de celle </p>
+
+        <p>de Laureline Galliot. </p>
+
+
+
+      <div id="A-VOUS" onclick="assemble(this)">voir le rendu</div>
+
+  </span>
+
+  </article>
+
+
+
+  <div id="lien-galerie">
+
+    <h6><a href="galerie.html"> Venez visiter la galerie !</a></h6>
+
+    <button type="button"><a href="index.html"><img src="img/outils/home.png"></a></img></button> <!--home -->
+
+  </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+<script src="js/scrolll-zoom.js"></script>
+
+
+
+  <script src="js/click.js"></script>
+
+
+
+  <script src="js/utils.js"></script>
+
+
+
+  <script src="js/store.js"></script>
+
+
+
+  <script src="js/breadth_first.js"></script>
+
+
+
+  <script src="js/watercolor.js"></script>
+
+
+
+  <script src="js/default-tool.js"></script>
+
+
+
+  <script src="js/effect.js"></script>
+
+
+
+  <script src="js/audio.js"></script>
+
+
+
+  <script src="js/contour_mass.js"></script>
+
+
+
+  <script src="js/orientation_effect.js"></script>
+
+
+
+  <script src="js/spray-effect.js"></script>
+
+
+
+  <script src="js/pencil-effect.js"></script>
+
+
+
+  <script src="js/blow_effect.js"></script>
+
+
+
+  <script src="js/sound_effect.js"></script>
+
+
+
+  <script src="js/main.js"></script>
+
+
+
+</body>
+
+</html>

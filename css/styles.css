@@ -1,0 +1,1359 @@
+/* ________________________________________ App Beaubourg _________________________________ */
+
+
+/* ________________________________________ Général _________________________________ *//*
+body
+{
+overflow: hidden !important;margin:0;
+padding: 0;
+height: 100%;
+width: 100%;
+}
+
+
+
+#container
+{
+	display: none;
+}
+
+#redimensionner-moi
+{
+		color: white;
+		font-family: 'Hammersmith', sans-serif;
+		display: block !important;
+		font-size: 1.2em;
+		text-align: center;
+		width: 1280px;
+		height: 800px;
+		background-color: black;
+		line-height: 0.5em;
+		margin-top: 0;
+		padding-top: 25%;
+		position: absolute;
+}
+*/
+
+
+
+#redimensionner-moi
+{
+	display: none !important;
+}
+
+#container
+{
+	display: block;
+}
+html
+{
+	overflow: visible;
+}/*
+img
+{
+		width: 5% !important;
+}
+*/
+body
+{
+	padding: 0;
+	margin: 0;
+	height: : 100%;
+	width: 100%;
+  background:url('../img/fond.jpg');
+  /*background:url('img/fond.jpg');*/
+  font-family: 'Hammersmith', sans-serif;
+  color: white;
+  overflow: hidden !important;
+  background-color: black;
+  background-attachment: fixed;
+}
+
+@font-face {
+    font-family: 'Hammersmith';
+    src: url('HammersmithOne.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+ul
+{
+    text-decoration: none;
+    list-style: none;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+
+/* _________________________________________ désactiver la selection bleu de l'image / texte ____________________________________ */
+
+
+*::selection
+{
+    background-color:transparent;
+}
+*::-moz-selection
+{
+    background-color:transparent;
+}
+*
+{
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+input[type="text"], textarea, [contenteditable]
+{
+
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* ________________________________________ Index _________________________________ */
+
+.animation-intro
+{
+	height: 100%;
+	width: 100%;
+    animation: intro 2s ease-in-out both;		-moz-  animation: intro 2s ease-in-out both;
+	  -webkit-  animation: intro 2s ease-in-out both;
+	  -o-  animation: intro 2s ease-in-out both;
+    opacity: 0;
+    /*animation-fill-mode: both;*/
+}
+
+@keyframes intro
+{
+    from {opacity: 0;}
+ to {    opacity: 1;}
+}
+
+.C-1-img,.C-1-1-img,
+.O-1-img,.O-1-1-img,
+.N-1-img,.N-1-1-img,
+.T-1-img,.T-1-1-img,
+.O-2-img,.O-2-1-img,
+.U-1-img,.U-1-1-img,
+.R-1-img,.R-1-1-img,
+.S-1-img,.S-1-1-img,
+.et-1-img,.et-1-1-img,
+.M-1-img,.M-1-1-img,
+.A-1-img,.A-1-1-img,
+.S-2-img,.S-2-2-img,
+.S-3-img,.S-3-3-img,
+.E-1-img,.E-1-1-img,
+.S-4-img,.S-4-4-img
+{
+    position: absolute;		-webkit-animation-duration: 1.5s;
+		-moz-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;  	-o-animation-duration: 1.5s;
+		animation-duration: 1.5s;
+
+		-webkit-animation-fill-mode: both;
+		-moz-animation-fill-mode: both;
+		-moz-animation-fill-mode: both;
+  	-o-animation-fill-mode: both;
+		animation-fill-mode: both;
+
+		-webkit-transition-timing-function:ease-in-out;		-moz-transition-timing-function:ease-in-out;		-moz-transition-timing-function:ease-in-out;  	-o-transition-timing-function:ease-in-out;		transition-timing-function:ease-in-out;
+		-webkit-animation-delay: 2s;		-moz-animation-delay: 2s;		-moz-animation-delay: 2s;		-o-animation-delay: 2s;		animation-delay: 2s;
+}
+
+/* ________________________________________ Icone Galerie _________________________________ */
+
+.icone-galerie
+{
+    position: absolute;
+    right: 5%;
+    top: 7%;
+    z-index: 100;
+}
+
+/* ________________________________________ (C)ontours & Masses _________________________________ */
+
+.C-1-img
+{
+			-webkit-animation-name: C-A-img;		-moz-animation-name: C-A-img;		-moz-animation-name: C-A-img;		-o-animation-name: C-A-img;		animation-name: C-A-img;
+}
+
+@keyframes C-A-img
+{
+       from {   transform:translate(255%,148%) scale(0.55);opacity: 0;}
+  to {transform:translate(75%,81%) scale(0.95);opacity: 1;}
+}
+
+
+.C-1-1-img
+{
+    animation-name: C-A-A-img;
+}
+
+@keyframes C-A-A-img
+{
+       from {   transform:translate(255%,148%) scale(0.55);opacity: 1;}
+  to {transform:translate(75%,82%) scale(0.95);opacity:0;}
+}
+
+
+/* ________________________________________ C(o)ntours & Masses _________________________________ */
+
+.O-1-img
+{
+    animation-name: O-A-img;
+}
+
+@keyframes O-A-img
+{
+from {
+    transform:translate(241%,148%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(146%,114%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+
+.O-1-1-img
+{
+    animation-name: O-A-A-img;
+}
+
+@keyframes O-A-A-img
+{
+from {
+    transform:translate(241%,148%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(146%,114%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+/* ________________________________________ Co(n)tours & Masses _________________________________ */
+
+.N-1-img
+{
+    animation-name: N-A-img;
+}
+
+@keyframes N-A-img
+{
+from {
+     transform:translate(420%,156%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(352%,102%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+.N-1-1-img
+{
+    animation-name: N-A-A-img;
+}
+
+@keyframes N-A-A-img
+{
+from {
+     transform:translate(420%,156%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(352%,102%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+/* ________________________________________ Con(t)ours & Masses _________________________________ */
+
+.T-1-img
+{
+    animation-name: T-A-img;
+}
+
+@keyframes T-A-img
+{
+from {
+    transform:translate(515%,150%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(497%,42%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+.T-1-1-img
+{
+    animation-name: T-A-A-img;
+}
+
+@keyframes T-A-A-img
+{
+from {
+    transform:translate(515%,150%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(497%,42%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+/* ________________________________________ Cont(o)urs & Masses _________________________________ */
+
+.O-2-img
+{
+    animation-name: O-B-img;
+
+}
+
+@keyframes O-B-img
+{
+from {
+    transform:translate(401%,150%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(426%,132%) scale(0.95);
+    opacity: 1;}
+}
+
+.O-2-1-img
+{
+    animation-name: O-B-A-img;
+}
+
+@keyframes O-B-A-img
+{
+from {
+    transform:translate(401%,150%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(426%,132%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+
+/* ________________________________________ Conto(u)rs & Masses _________________________________ */
+
+.U-1-img
+{
+    animation-name: U-A-img;
+}
+
+@keyframes U-A-img
+{
+from {
+    transform:translate(611%,150%) scale(0.55);
+    opacity:0;}
+to {
+    transform:translate(700%,98%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+
+.U-1-1-img
+{
+    animation-name: U-A-A-img;
+}
+
+@keyframes U-A-A-img
+{
+from {
+    transform:translate(611%,150%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(700%,98%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+/* ________________________________________ Contou(r)s & Masses _________________________________ */
+
+.R-1-img
+{
+    animation-name: R-A-img;
+
+}
+
+@keyframes R-A-img
+{
+from {
+    transform:translate(730%,150%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(880%,146%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+.R-1-1-img
+{
+    animation-name: R-A-A-img;
+}
+
+@keyframes R-A-A-img
+{
+from {
+    transform:translate(730%,150%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(880%,146%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+
+/* ________________________________________ Contour(s) & Masses _________________________________ */
+
+.S-1-img
+{
+    animation-name: S-A-img;
+
+}
+
+@keyframes S-A-img
+{
+from {
+    transform:translate(800%,148%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(1000%,75%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+.S-1-1-img
+{
+    animation-name: S-A-A-img;
+}
+
+@keyframes S-A-A-img
+{
+from {
+    transform:translate(800%,148%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(1000%,75%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+
+/* ________________________________________ Contours (&) Masses _________________________________ */
+
+.et-1-img
+{
+    animation-name: etA-img;
+}
+
+@keyframes etA-img
+{
+from {
+    transform:translate(224%,226%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(63%,290%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+.et-1-1-img
+{
+    animation-name: etA-A-img;
+}
+
+@keyframes etA-A-img
+{
+from {
+    transform:translate(224%,226%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(63%,290%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+
+/* ________________________________________ Contours & (M)asses _________________________________ */
+
+.M-1-img
+{
+    animation-name: M-A-img;
+}
+
+@keyframes M-A-img
+{
+from {
+    transform:translate(352%,235%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(248%,355%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+.M-1-1-img
+{
+    animation-name: M-A-A-img;
+}
+
+@keyframes M-A-A-img
+{
+from {
+    transform:translate(352%,235%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(248%,355%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+/* ________________________________________ Contours & M(a)sses _________________________________ */
+
+.A-1-img
+{
+    animation-name: A-A-img;
+}
+
+@keyframes A-A-img
+{
+from {
+    transform:translate(400%,235%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(345%,300%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+.A-1-1-img
+{
+    animation-name: A-A-A-img;
+}
+
+@keyframes A-A-A-img
+{
+from {
+    transform:translate(400%,235%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(345%,300%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+
+/* ________________________________________ Contours & Ma(s)ses _________________________________ */
+
+.S-2-img
+{
+    animation-name: S-B-img;
+}
+
+@keyframes S-B-img
+{
+from {
+    transform:translate(590%,227%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(575%,355%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+.S-2-2-img
+{
+    animation-name: S-B-B-img;
+}
+
+@keyframes S-B-B-img
+{
+from {
+    transform:translate(590%,227%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(575%,355%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+/* ________________________________________ Contours & Mas(s)es _________________________________ */
+
+.S-3-img
+{
+    animation-name: S-C-img;
+}
+
+@keyframes S-C-img
+{
+from {
+    transform:translate(649%,227%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(680%,305%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+.S-3-3-img
+{
+    animation-name: S-C-C-img;
+}
+
+@keyframes S-C-C-img
+{
+from {
+    transform:translate(649%,227%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(680%,305%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+
+/* ________________________________________ Contours & Mass(e)s _________________________________ */
+
+.E-1-img
+{
+    animation-name: E-A-img;
+}
+
+@keyframes E-A-img
+{
+from {
+    transform:translate(929%,234%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(1035%,360%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+.E-1-1-img
+{
+    animation-name: E-A-A-img;
+}
+
+@keyframes E-A-A-img
+{
+from {
+    transform:translate(929%,234%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(1035%,360%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+
+
+/* ________________________________________ Contours & Masse(s) _________________________________ */
+
+.S-4-img
+{
+    animation-name: S-D-img;
+}
+
+@keyframes S-D-img
+{
+from {
+    transform:translate(785%,227%) scale(0.55);
+    opacity: 0;}
+to {
+    transform:translate(920%,375%) scale(0.95);
+    opacity: 1;
+    }
+}
+
+.S-4-4-img
+{
+    animation-name: S-D-D-img;
+}
+
+@keyframes S-D-D-img
+{
+from {
+    transform:translate(785%,227%) scale(0.55);
+    opacity: 1;}
+to {
+    transform:translate(920%,375%) scale(0.95);
+    opacity: 0;
+    }
+}
+
+/* ________________________________________ INTRO 1 - d'après le projet de Laureline Galliot _________________________________ */
+
+h1
+{
+/*    animation: intro-un-laureline 2s ease-in-out;*/
+    animation-fill-mode: both;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+    top: 60%;
+    animation:intro-un-laureline 2.2s ease-in-out;
+    font-weight: normal;
+}
+
+@keyframes intro-un-laureline
+{
+    from {opacity: 0;}
+    to {  opacity: 1; }
+}
+
+/* ________________________________________ INTRO 2 - d'après le projet de Laureline Galliot _________________________________ */
+
+/*.intro2-laureline
+{
+    animation: intro-deux-laureline 1s ease-in-out;
+    opacity: 1;
+    animation-delay: 10s;
+}
+
+@keyframes intro-deux-laureline
+{
+    from {opacity: 1;}
+    to {  opacity: 0; }
+}
+*/
+
+/* ________________________________________ Objets _________________________________ */
+.apparition-objet
+{
+    animation: objets 2s;
+    animation-delay: 3s;
+    opacity: 0;
+    animation-fill-mode: both;
+}
+
+@keyframes objets
+{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.theiere,
+.vase,
+.cochon
+{
+    width: 26%;
+    transition: all 2s;
+    position: absolute;
+    z-index: 1;
+}
+
+
+
+
+
+/* ________________________________________ Theière _________________________________ */
+
+.theiere
+{
+    right: 8.5%;
+    bottom: 33%;
+    animation: theiere-deplacement 4s ease-in-out;
+    animation-delay: 3.5s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+@keyframes theiere-deplacement
+{
+    0% {transform: translate(0,0);}
+    50%{transform: translate(0%,10%);}
+    100% {transform: translate(0%,0%);}
+    }
+
+
+.background-opacite
+{
+    width: 100%;
+    height: 100%;
+    background:url('../img/fond.jpg');
+    position: absolute;
+    z-index::50;
+    opacity:0.6;
+}
+
+
+
+
+
+/* ________________________________________ Cochon _________________________________ */
+
+.cochon
+{
+    left:7%;
+    bottom: 26%;
+    width: 27%;
+    animation: cochon-deplacement 4s ease-in-out;
+    animation-delay: 3.5s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+@keyframes cochon-deplacement
+{
+    0% {transform: translate(0,0);}
+    50%{transform: translate(0%,15%);}
+    100% {transform: translate(0%,0%);}
+    }
+
+/* _________________________________________ Vase __________________________________ */
+
+.vase
+{
+    left:42%;
+    top:11.5%;
+    width: 16%;
+    animation: vase-deplacement 4s ease-in-out;
+    animation-delay: 3.5s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+@keyframes vase-deplacement
+{
+    0% {transform: translate(0,0);}
+    50%{transform: translate(0%,-10%);}
+    100% {transform: translate(0%,0%);}
+}
+
+
+/* _________________________________________h4 une application par  __________________________________ */
+
+h4
+{
+    font-weight: normal;
+    position: absolute;
+    z-index: 100;
+    bottom: 3%;
+    font-size: 1.2em;
+    right: 5%;
+}
+
+/* _________________________________________h2 cliquez pour continuer __________________________________ */
+
+h2
+{
+    font-weight: normal;
+    color: white;
+    z-index: 20;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 60%;
+    opacity: 0;
+    animation: choisissez 1s ease-in-out;
+    animation-fill-mode: both;
+    animation-delay: 3.5s;
+    font-size: 2em;
+}
+
+@keyframes choisissez
+{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+/* ________________________________________ Changement HTML _________________________________ */
+
+/* ________________________________________ Zone éclatement _________________________________ */
+
+#mainDiv
+{
+	opacity: 1;
+	position: absolute;
+	overflow: hidden !important;
+}.img-objet{	animation: choisissez 15s ease-in;	animation-fill-mode: both;}
+
+.img-objet, canvas
+{
+		transition: all 5s;
+}
+
+.canvas
+{
+	animation: translate-canvas-drawing linear infinite 7s;
+	animation-fill-mode: both;
+}
+
+@keyframes translate-canvas-drawing
+{
+		0% {transform: translate(0.5%);}
+		25% {transform:translate(0.5%,1%);}
+		50% {transform:translate(1%,0.5%);}
+		75% {transform:translate(0.5%,1%);}
+		100% {transform: translate(0.5%);}
+	 }
+
+
+
+.canvas-test
+{
+	animation-delay: 4.5s !important;
+	animation-fill-mode: forwards !important;
+}
+
+.canvas-test:nth-child(1n+1)
+{
+	transition: all 5s;
+	animation: translate-canvas-objet-1n ease-out infinite 7s;
+}
+
+
+ @keyframes translate-canvas-objet-1n
+ {
+     0% {transform: translate(0,0);opacity: 1;}
+     25% {transform:translate(25%,15%);}
+     50% {transform:translate(15%,25%); opacity: 0.5;}
+     75% {transform:translate(25%,10%);}
+		 100% {transform: translate(0,0); opacity: 1;}
+	  }
+
+	@keyframes translate-canvas-objet-2n
+	  {
+	      0% {transform: translate(0,0);opacity: 1;}
+	      25% {transform:translate(15%,25%);}
+	      50% {transform:translate(25%,15%); opacity: 0.5;}
+	      75% {transform:translate(15%,25%);}
+	 		 100% {transform: translate(0,0); opacity: 1;}
+	 	  }
+
+			@keyframes translate-canvas-objet-3n
+			  {
+			      0% {transform: translate(0,0);opacity: 1;}
+			      25% {transform:translate(5%,10%);}
+			      50% {transform:translate(10%,5%); opacity: 0.5;}
+			      75% {transform:translate(15%,5%);}
+			 		 100% {transform: translate(0,0); opacity: 1;}
+			 	  }
+
+
+.canvas-test:nth-child(2n+2)
+		{
+			transition: all 5s;
+			animation: translate-canvas-objet-2n ease-out infinite 7s;
+		}
+
+		.canvas-test:nth-child(3n+3)
+				{
+					transition: all 5s;
+					animation: translate-canvas-objet-3n ease-out infinite 7s;
+				}
+
+#eclatement-theiere .img-objet{
+	margin-left: 30%;
+	margin-top: 16.5%;
+}
+#eclatement-tirelire .img-objet{	margin-left: 30%;	margin-top: 15%;}#eclatement-vase .img-objet{	margin-left: 37.2%;	margin-top: 10.5%;}
+/* ________________________________________ Règles du jeu _________________________________ */
+
+article
+{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 32%;
+    left: 28.5%;
+    margin-top: 15%;
+    display: block;
+    z-index: 10000;
+    padding: 10px 60px;
+    font-size: 1.4em;
+    border: 7px solid white;
+    text-align: center;
+    position: absolute;
+    z-index: 60;
+}
+
+h3
+{
+
+    text-transform: uppercase;
+    font-size: 1.7em;
+    font-weight: normal;
+}
+
+article p
+{
+    display: block;
+    line-height: 0.35em;
+}
+
+#A-VOUS
+{
+    text-transform: uppercase;
+    font-size: 1em;
+    background-color: white;
+    opacity: 1;
+    display: block;
+    width: 55%;
+    padding: 10px;
+    color: black;
+    margin:auto;
+    margin-top: 50px;
+    margin-bottom:30px;
+}
+
+article.active
+{
+    animation:displaynone 0.5s ease-in-out;
+    animation-fill-mode: both;
+		pointer-events: none;
+}
+
+@keyframes displaynone
+{
+    0% {opacity: 1;}
+    100% {opacity: 0;z-index: -1000000000000000;}
+}
+
+
+button
+{
+outline-style:none;
+}
+
+/* ________________________________________ Outils _________________________________ */
+.outils
+{
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  z-index: 80;
+  padding: 10px;
+	align-items: center;
+  position:fixed;
+  bottom: -2%;
+  width:100%;	left: 0;
+	transition: all 0.5s;
+}span p .outils-numerique{		animation: outils 1s infinite ease-in;		display: inline !important;		animation-fill-mode: both;		color: #ff99ff;}@keyframes outils{    0% {opacity: 1;} 50% {    opacity: 0.3;}  100% {    opacity: 1;}}.outils button:nth-child(1),.outils button:nth-child(2),.outils button:nth-child(3),.outils button:nth-child(4){				border-radius: 50%;				width: 45px !important;				height: 45px !important;			}#outils1 button:nth-child(1),#outils1 button:nth-child(2),#outils1 button:nth-child(3),#outils1 button:nth-child(4){					border: 3px solid #ff99ff;					animation: outils 1s infinite ease-in;}#outils2 button:nth-child(1),#outils2 button:nth-child(2),#outils2 button:nth-child(3),#outils2 button:nth-child(4){					border: 3px solid white;}#outils2 button:nth-child(1):hover,#outils2 button:nth-child(2):hover,#outils2 button:nth-child(3):hover,#outils2 button:nth-child(4):hover{		border: 3px solid #ff99ff;}.outils button:nth-child(1){	    background:url('../img/outils/1.png');}
+.outils button:nth-child(2)
+{
+	    background:url('../img/outils/2.png');
+}
+
+.outils button:nth-child(3)
+{
+	    background:url('../img/outils/3.png');
+}
+
+.outils button:nth-child(4)
+{
+	    background:url('../img/outils/4.png');
+}
+
+#outils2
+{
+	display: none;
+}
+
+#outils2 button:nth-child(2),
+#outils2 button:nth-child(3),
+#outils2 button:nth-child(4)
+{
+		margin-left: -4px !important;
+}
+#outils2 button:nth-child(5)
+{
+	margin-left: 485px !important;
+}
+
+#outils2 button:nth-child(6)
+{
+	margin-left: -2px !important;
+}
+
+#outils2 button:nth-child(7)
+{
+	margin-left: -9px !important;
+}
+
+
+.outils button
+{
+  margin-right: 50px;
+  margin-left: 40px;
+  margin-top:5px;
+}
+
+
+.outils button:nth-child(2n),
+.outils button:nth-child(3n)
+{
+    margin-left:0px;
+}
+.outils button:nth-child(5n)
+{
+    margin-left:490px;
+}
+
+
+.outils button:nth-child(7n)
+{
+    margin-left:-5px;
+}
+
+button
+{
+    border: 0px;
+    background: none;
+    color: white;
+		transition: all 0.2s;
+}
+
+button:hover ~ button
+{
+		opacity: 0.4;
+}
+
+
+
+
+article.info-outils{
+		height: 20px;
+		width: 40%;
+		color: #ff99ff;
+		left: 36%;
+		bottom: 3.5%;
+		background: none;
+		border: none;
+		position: absolute;
+		transition: 0.5s;
+		text-align: left;
+		z-index: 100;
+		padding: 0;
+		font-size: 1.2em;
+}
+
+/* ________________________________________ Validation fin_________________________________ */
+
+
+#masquer
+{
+    display: none;
+    width: 35%;
+    text-align: center;
+    margin-top: 13%;
+    position: absolute;
+    z-index: 60;
+}
+
+#masquer #A-VOUS,
+#masquer h3
+{
+    text-align: center;
+}
+
+#masquer #A-VOUS
+{
+    width: 45%;
+		padding:10px;
+}
+
+body#galerie
+{
+	overflow-y: visible !important;
+}
+
+#lien-galerie h6
+{
+	font-weight: normal;
+	font-size: 1.2em;
+	bottom: -15% !important;
+	position: absolute;
+	padding: 4px;
+	border-bottom:2px solid white;
+	display: block;
+	left: 41.5%;
+}
+
+#lien-galerie
+{
+		display: none;
+    width: 100%;
+    position: absolute;
+    height: 7.5%;
+    bottom: 0;
+		z-index: 5000000;
+		j
+}
+
+#lien-galerie button
+{
+	position: absolute;
+	right: 7%;
+	bottom: 50%;
+	margin-left:50px;
+}
+
+span
+{
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	display: block;
+	position: relative;
+    z-index: 1000000000000000000000000000000;
+}
+
+
+
+
+/* ________________________________________ Changement HTML _________________________________ */
+
+/* ____________________________________________ Galerie _________________________________ */
+
+body#galerie,
+body#galerie #mainDiv
+{
+    overflow-y: visible !important;
+    background:url('../img/fond-galerie.png');
+background-attachment:fixed;
+}
+
+.test
+{
+        background:url('../img/fond-galerie.png');        height: 42.5%;
+        z-index: 110;
+        position: fixed;
+        width: 100%;
+				background-color: transparent;
+}
+
+
+h5
+{
+    text-transform: uppercase;
+    font-size: 1.8em;
+    position: fixed;
+    font-weight: normal;
+    left: 5%;
+    top: 3%;
+    line-height: 0;
+    height: 50px;
+    z-index: 111;
+}
+
+ul#grille-galerie
+{
+    width: 90%;
+    height: 500px;
+    position: fixed;
+    left: 5%;
+    top: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    padding: 0;
+    z-index:1000;
+
+
+}
+
+ul#grille-galerie li
+{
+    width: 30%;
+    height: 40%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 7px solid white;
+    margin: 0;
+    margin-bottom: 5%;
+    padding: 0;
+    text-align:center;
+}
+
+ul#grille-galerie2
+{
+    width: 90%;
+    height: 500px;
+    margin-top:22.5%;
+    position: absolute;
+    left: 5%;
+    top: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    padding: 0;
+		align-items: flex-start;
+		align-content: flex-start;
+
+}
+/*
+ul#grille-galerie li img
+{ width:100%;
+}
+*/
+
+ul#grille-galerie li h6 {
+position:absolute;
+width:30%;
+top:27%;
+bottom:55;
+font-size:1.2em;
+font-weight:normal;
+z-index: 10;
+text-transform:uppercase;
+text-align:center;
+
+}
+
+.tirelire-galerie img
+{
+    width:60%;
+    padding:5%;
+}
+
+.vase-galerie img
+{
+    width:30%;
+    padding:5%;
+}
+
+.theiere-galerie img
+{
+    width:45%;
+    padding:5%;
+}
+
+ul#grille-galerie2 li
+{
+    width: 30%;
+    height: 40%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 7px solid white;
+    margin: 0;
+    margin-bottom: 5%;
+    padding: 0;
+		overflow: hidden;
+		text-align: center;
+		align-items: flex-start;
+		align-content: flex-start;
+}
+
+
+.galerie-home
+{
+    position: fixed;
+    right: 5%;
+    top: 5%;
+    z-index: 111;
+}
+
+ul#grille-galerie2 li img
+{
+	width: 100%;
+	transform:scale(1.3);	margin-top: -30px !important;
+	margin: auto;
+}
+}

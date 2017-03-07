@@ -1,0 +1,16 @@
+{
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "ftp.cluster020.hosting.ovh.net",
+  "port": "21",
+  "target": "/www/application-beaubourg/",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "jeremyloal",
+  "password": "dQ3P7HEz896X",
+  "watch": [],
+  "transport": "ftp"
+}
