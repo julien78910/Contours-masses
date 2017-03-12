@@ -1,0 +1,40 @@
+<!--
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+<ion-content>
+	<div id="container" class="body">
+    <div class="test"></div>
+		  <h5>galerie</h5>
+		  <a (click)="goRoot$()"><img class="galerie-home" src="assets/img/outils/home.png" /></a>
+
+      <ul id="grille-galerie">
+		    <li>
+			    <h6>piggy bank</h6>
+          <div class="tirelire-galerie">
+					  <img src="assets/img/galerie/tirelire-galerie.png" />
+          </div>
+			  </li>
+        <li>
+          <h6>luckytoad</h6>
+          <div class="vase-galerie">
+            <img src="assets/img/galerie/vase-galerie.png" />
+          </div>
+			 </li>
+       <li>
+         <h6>teapot</h6>
+         <div class="theiere-galerie">
+           <img src="assets/img/galerie/theiere-galerie.png" />
+         </div>
+			</li>
+    </ul>
+		<ul id="grille-galerie2">
+			<li *ngFor="let img of images">
+        <img [src]="img"/>
+			</li>
+		</ul>
+	</div>
+</ion-content>
