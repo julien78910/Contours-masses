@@ -18,6 +18,11 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <allow-navigation href="http://localhost:8080/*"/>
+        <feature name="CDVWKWebViewEngine">
+          <param name="ios-package" value="CDVWKWebViewEngine" />
+        </feature>
+        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     </platform>
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
@@ -40,4 +45,5 @@
     <plugin name="cordova-plugin-device-orientation" spec="~1.0.6" />
     <plugin name="cordova-plugin-audioinput" spec="~0.3.0" />
     <plugin name="cordova-plugin-file" spec="~4.3.2" />
+    <plugin name="cordova-plugin-wkwebview-engine" spec="https://github.com/driftyco/cordova-plugin-wkwebview-engine.git" />
 </widget>
