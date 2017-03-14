@@ -1,10 +1,6 @@
 {
   "name": "contour_masses_ionic",
-<<<<<<< HEAD
-  "app_id": "dfa29642",
-=======
   "app_id": "36a2ee95",
->>>>>>> bc74f64fe5ad7704c004c844a49d49f201761a3f
   "v2": true,
   "typescript": true
 }
