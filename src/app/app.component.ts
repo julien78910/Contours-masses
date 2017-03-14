@@ -13,6 +13,11 @@ export class MyApp {
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
+      if (window.indexedDB) {
+         console.log("I'm in WKWebView!");
+      } else {
+         console.log("I'm in UIWebView");
+      }
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
