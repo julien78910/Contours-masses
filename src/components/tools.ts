@@ -4,6 +4,8 @@ import { UTILS } from './utils';
 import { Audio } from './audio';
 import { DeviceOrientation } from 'ionic-native';
 
+declare var gyro, THREE;
+
 export interface Tool {
   addEffectEndListener(callback: ()=>void): void;
   startDraw(canvas: HTMLCanvasElement): void;
@@ -25,6 +27,8 @@ export class OrientationEffect implements Tool {
   private effectEndListener: ()=>void;
   private canvas: HTMLCanvasElement;
   private  gyroscope = (<any>navigator).gyroscope;
+  private timeout: number;
+  private effectDuration: number = 5000;
 
   addEffectEndListener(callback: ()=>void): void {
     this.effectEndListener = callback;
@@ -49,18 +53,69 @@ export class OrientationEffect implements Tool {
 
   }
 
-  applyEffect(canvas: HTMLCanvasElement): void {
-    //FIXME
-    this.gyroscope.watch((res) => {
-      console.log("res: ", res);
-    }, (error) => {
-      console.error("Error: Failed to get Gyroscope: ", error);
-    }, null);
 
-    //Gyroscope.watch()
-   //.subscribe((orientation: GyroscopeOrientation) => {
-    //  console.log(orientation.x, orientation.y, orientation.z, orientation.timestamp);
-   //});
+  computeQuaternionFromEulers(alpha, beta, gamma) {
+  	var x = beta * Math.PI / 180 ; // beta value
+  	var y = gamma  * Math.PI / 180; // gamma value
+  	var z = alpha  * Math.PI / 180 ; // alpha value
+
+  	//precompute to save on processing time
+  	var cX = Math.cos( x/2 );
+  	var cY = Math.cos( y/2 );
+  	var cZ = Math.cos( z/2 );
+  	var sX = Math.sin( x/2 );
+  	var sY = Math.sin( y/2 );
+  	var sZ = Math.sin( z/2 );
+
+  	var w = cX * cY * cZ - sX * sY * sZ;
+  	var x = sX * cY * cZ - cX * sY * sZ;
+  	var y = cX * sY * cZ + sX * cY * sZ;
+  	var z = cX * cY * sZ + sX * sY * cZ;
+
+
+    return new THREE.Quaternion(x, y, z, w);
+  }
+
+  selectPoints(): Array<any>{
+    var selected: Array<any> = [];
+    var i = UTILS.getRandomInt(0, 20);
+    var points = this.getPoints();
+    while (i < points.length) {
+      selected.push(points[i]);
+      i += UTILS.getRandomInt(10, 40);
+    }
+
+    return selected;
+  }
+
+  applyEffect(canvas: HTMLCanvasElement): void {
+    this.canvas = canvas;
+    var selected = this.selectPoints();
+    gyro.calibrate(); // Calibrate measurement during the page loading
+    gyro.startTracking((o) => {
+      var q = this.computeQuaternionFromEulers(o.alpha, o.beta, o.gamma);
+      var vector = new THREE.Vector3(0, 0, 1);
+
+      vector.applyQuaternion(q);
+
+      for (var i = 0; i < selected.length; ++i) {
+        var p = selected[i];
+
+        p.x += Math.floor(UTILS.getRandomInt(5, 15) * vector.y);
+        p.y += Math.floor(UTILS.getRandomInt(5, 15) * vector.x);
+
+        const breadthFirst = new BreadthFirst({
+          canvas: this.canvas,
+          color: this.color,
+          pos: [ p.x, p.y ],
+          size: this.size
+        });
+      }
+    });
+    gyro.frequency = 100;
+    this.timeout = setTimeout(() => {
+      gyro.stopTracking();
+    }, this.effectDuration);
   }
 
   getPoints(): Array<Point> {
