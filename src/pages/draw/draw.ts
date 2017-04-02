@@ -38,10 +38,12 @@ export class DrawPage implements AfterViewInit {
   private pieces: Array<Array<HTMLCanvasElement>> = [];
   private pieceToCanvas = new Map<string, Array<HTMLCanvasElement>>();
   private currentCanvas: HTMLCanvasElement;
+  private history: Array<string>;
 
   constructor(private navCtrl: NavController, private params: NavParams) {
     this.objectImg$ = this.params.get("object");
     this.galeriePage = GaleriePage;
+    this.history = new Array<string>();
   }
 
   ngAfterViewInit() {
@@ -96,7 +98,18 @@ export class DrawPage implements AfterViewInit {
   }
 
   back$(): void {
+    let last = this.history.pop();
+    let iter = this.pieceToCanvas.values();
+    let canvas = iter.next();
+    while (!canvas.done) {
+      for (let i = 0; i < canvas.value.length; ++i) {
+        if (canvas.value[i].id == last) {
+            this.container.removeChild(canvas.value.splice(i, 1)[0]);
+        }
+      }
 
+      canvas = iter.next();
+    }
   }
 
   cutObject(): void {
@@ -330,13 +343,17 @@ export class DrawPage implements AfterViewInit {
       return;
     }
 
+    this.history.push(this.currentCanvas.id);
     this.pieceToCanvas.get(piece.id).push(this.currentCanvas);
     this.currentCanvas = this.addPieceCanvas();
     this.currentCanvas.style.pointerEvents = "none";
     this.currentTool.addEffectEndListener(() => {
       this.currentTool = null;
-      this.pieceToCanvas.get(piece.id).push(this.currentCanvas);
-      this.currentCanvas = this.addPieceCanvas();
+      if (!this.isCanvasEmpty(this.currentCanvas)) {
+        this.history.push(this.currentCanvas.id);
+        this.pieceToCanvas.get(piece.id).push(this.currentCanvas);
+        this.currentCanvas = this.addPieceCanvas();
+      }
     });
     this.currentTool.applyEffect(this.currentCanvas);
   }
