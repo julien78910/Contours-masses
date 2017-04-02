@@ -20,12 +20,15 @@ export interface Tool {
 /***** Orientation Effect *****/
 
 export class OrientationEffect implements Tool {
-  private color = [ 96, 126, 198 ];
-  private colorEnd = [145, 42, 124];
-  private size = 150;
+  private colorStart = 'rgba(96, 126, 198, 1)';
+  private colorMiddle = 'rgba(120, 80, 150, 0.5)';
+  private colorEnd = 'rgba(145, 42, 124, 0)';
+  private effectColor = [ 255, 153, 255 ];
+  private size = 50;
   private points = [];
   private effectEndListener: ()=>void;
   private canvas: HTMLCanvasElement;
+  private ctx: CanvasRenderingContext2D;
   private  gyroscope = (<any>navigator).gyroscope;
   private timeout: number;
   private effectDuration: number = 5000;
@@ -36,9 +39,11 @@ export class OrientationEffect implements Tool {
 
   startDraw(canvas: HTMLCanvasElement): void {
     this.canvas = canvas;
+    this.ctx = canvas.getContext("2d");
   }
 
   draw(x: number, y: number): void {
+    /*
     new BreadthFirst({
       canvas: this.canvas,
       color: this.color,
@@ -46,6 +51,15 @@ export class OrientationEffect implements Tool {
       size: this.size,
       colorEnd: this.colorEnd
     });
+    */
+
+    let radgrad = this.ctx.createRadialGradient(x, y, 10, x, y,20);
+    radgrad.addColorStop(0, this.colorStart);
+    radgrad.addColorStop(0.5, this.colorMiddle);
+    radgrad.addColorStop(1, this.colorEnd);
+    this.ctx.fillStyle = radgrad;
+    this.ctx.fillRect(x - 20, y - 20, 40, 40);
+
     this.points.push(new Point(x, y));
   }
 
@@ -91,7 +105,7 @@ export class OrientationEffect implements Tool {
   applyEffect(canvas: HTMLCanvasElement): void {
     this.canvas = canvas;
     var selected = this.selectPoints();
-    gyro.calibrate(); // Calibrate measurement during the page loading
+    gyro.calibrate();
     gyro.startTracking((o) => {
       var q = this.computeQuaternionFromEulers(o.alpha, o.beta, o.gamma);
       var vector = new THREE.Vector3(0, 0, 1);
@@ -106,7 +120,7 @@ export class OrientationEffect implements Tool {
 
         const breadthFirst = new BreadthFirst({
           canvas: this.canvas,
-          color: this.color,
+          color: this.effectColor,
           pos: [ p.x, p.y ],
           size: this.size
         });
@@ -128,8 +142,10 @@ export class OrientationEffect implements Tool {
 /***** Sound Effect *****/
 
 export class SoundEffect implements Tool {
-  private color = [ 96, 126, 198 ];
-  private colorEnd = [145, 42, 124];
+  private colorStart = 'rgba(96, 126, 198, 1)';
+  private colorMiddle = 'rgba(120, 80, 150, 0.5)';
+  private colorEnd = 'rgba(145, 42, 124, 0)';
+  private effectColor = [ 255, 153, 255 ];
   private size = 150;
   private waitTime = 50;
   private effectDuration = 5000; // 5s
@@ -137,6 +153,7 @@ export class SoundEffect implements Tool {
   private points = [];
   private effectEndListener: ()=>void;
   private canvas: HTMLCanvasElement;
+  private ctx: CanvasRenderingContext2D;
   private audio: Audio;
 
   addEffectEndListener(callback: ()=>void): void {
@@ -145,9 +162,11 @@ export class SoundEffect implements Tool {
 
   startDraw(canvas: HTMLCanvasElement): void {
     this.canvas = canvas;
+    this.ctx = canvas.getContext("2d");
   }
 
   draw(x: number, y: number): void {
+    /*
     new BreadthFirst({
       canvas: this.canvas,
       color: this.color,
@@ -155,6 +174,14 @@ export class SoundEffect implements Tool {
       size: this.size,
       colorEnd: this.colorEnd
     });
+    */
+    let radgrad = this.ctx.createRadialGradient(x, y, 10, x, y,20);
+    radgrad.addColorStop(0, this.colorStart);
+    radgrad.addColorStop(0.5, this.colorMiddle);
+    radgrad.addColorStop(1, this.colorEnd);
+    this.ctx.fillStyle = radgrad;
+    this.ctx.fillRect(x - 20, y - 20, 40, 40);
+
     this.points.push(new Point(x, y));
   }
 
@@ -182,7 +209,7 @@ export class SoundEffect implements Tool {
 
     new BreadthFirst({
       canvas: this.canvas,
-      color: [ 255, 153, 255 ],
+      color: this.effectColor,
       pos: [ p.x, p.y ],
       size: size
     });
@@ -265,12 +292,14 @@ export class SprayEffect implements Tool {
 /***** Pencil Effect *****/
 
 export class PencilEffect implements Tool {
-  private color = [ 96, 126, 198 ];
-  private colorEnd = [145, 42, 124];
-  private size = 150;
+  private colorStart = 'rgba(96, 126, 198, 1)';
+  private colorMiddle = 'rgba(120, 80, 150, 0.5)';
+  private colorEnd = 'rgba(145, 42, 124, 0)';
+  private size = 40;
   private points = [];
   private effectEndListener: ()=>void;
   private canvas: HTMLCanvasElement;
+  private ctx: CanvasRenderingContext2D;
 
   addEffectEndListener(callback: ()=>void): void {
     this.effectEndListener = callback;
@@ -278,9 +307,11 @@ export class PencilEffect implements Tool {
 
   startDraw(canvas: HTMLCanvasElement): void {
     this.canvas = canvas;
+    this.ctx = canvas.getContext("2d");
   }
 
   draw(x: number, y: number): void {
+    /*
     new BreadthFirst({
       canvas: this.canvas,
       color: this.color,
@@ -288,6 +319,15 @@ export class PencilEffect implements Tool {
       size: this.size,
       colorEnd: this.colorEnd
     });
+    */
+
+    let radgrad = this.ctx.createRadialGradient(x, y, this.size / 4, x, y, this.size / 2);
+    radgrad.addColorStop(0, this.colorStart);
+    radgrad.addColorStop(0.5, this.colorMiddle);
+    radgrad.addColorStop(1, this.colorEnd);
+    this.ctx.fillStyle = radgrad;
+    this.ctx.fillRect(x - this.size / 2, y - this.size / 2, this.size, this.size);
+
     this.points.push(new Point(x, y));
   }
 
