@@ -129,6 +129,8 @@ export class OrientationEffect implements Tool {
     gyro.frequency = 100;
     this.timeout = setTimeout(() => {
       gyro.stopTracking();
+      this.effectEndListener();
+      this.points = null;
     }, this.effectDuration);
   }
 
@@ -195,6 +197,7 @@ export class SoundEffect implements Tool {
     this.timeout = setTimeout(() => {
       this.audio.stop();
       this.effectEndListener();
+      this.points = null;
     }, this.effectDuration);
   }
 
@@ -280,6 +283,7 @@ export class SprayEffect implements Tool {
 
   applyEffect(canvas: HTMLCanvasElement): void {
     this.effectEndListener();
+    this.points = null;
   }
 
   getPoints(): Array<Point> {
@@ -337,6 +341,7 @@ export class PencilEffect implements Tool {
 
   applyEffect(canvas: HTMLCanvasElement): void {
     this.effectEndListener();
+    this.points = null;
   }
 
   getPoints(): Array<Point> {
