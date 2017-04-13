@@ -147,12 +147,14 @@ export class SoundEffect implements Tool {
   private colorStart = 'rgba(96, 126, 198, 1)';
   private colorMiddle = 'rgba(120, 80, 150, 0.5)';
   private colorEnd = 'rgba(145, 42, 124, 0)';
-  private effectColor = [ 255, 153, 255 ];
+  private effectColor = '#ff90ff';
   private size = 150;
+  private effectSize = 100;
   private waitTime = 50;
   private effectDuration = 5000; // 5s
   private timeout: number;
   private points = [];
+  private effectPoint;
   private effectEndListener: ()=>void;
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
@@ -168,15 +170,6 @@ export class SoundEffect implements Tool {
   }
 
   draw(x: number, y: number): void {
-    /*
-    new BreadthFirst({
-      canvas: this.canvas,
-      color: this.color,
-      pos: [ x, y ],
-      size: this.size,
-      colorEnd: this.colorEnd
-    });
-    */
     let radgrad = this.ctx.createRadialGradient(x, y, 10, x, y,20);
     radgrad.addColorStop(0, this.colorStart);
     radgrad.addColorStop(0.5, this.colorMiddle);
@@ -203,21 +196,26 @@ export class SoundEffect implements Tool {
 
   processSound(level: number): void {
     console.log("lvl: ", level);
-    if (level < 0.1)
+    if (level < 0.1) {
+      this.effectPoint = null;
       return;
+    }
 
-    var i = UTILS.getRandomInt(0, this.points.length - 1);
-    var p = this.points[i];
-    var size = Math.floor(level * this.size);
+    if (!this.effectPoint) {
+      if(!this.points) return;
+      var i = UTILS.getRandomInt(0, this.points.length - 1);
+      this.effectPoint = this.points[i];
+    }
 
-    new BreadthFirst({
-      canvas: this.canvas,
-      color: this.effectColor,
-      pos: [ p.x, p.y ],
-      size: size
-    });
+    var size = Math.floor(level * this.effectSize);
 
-    this.audio.pause(1000);
+    var ctx = this.canvas.getContext("2d");
+    ctx.save();
+    ctx.translate(this.effectPoint.x, this.effectPoint.y);
+    ctx.rotate(Math.PI * 180 / UTILS.getRandomInt(0, 180));
+    ctx.fillStyle = this.effectColor;
+    ctx.fillRect(0, 0, size, 1.5);
+    ctx.restore();
   }
 
   getPoints(): Array<Point> {
