@@ -88,7 +88,6 @@ export class OrientationEffect implements Tool {
 
     this.subscription = this.gyroscope.watch(options)
     .subscribe((orientation: GyroscopeOrientation) => {
-      console.log(orientation.x, orientation.y, orientation.z, orientation.timestamp);
       ax += orientation.x;
       ay += orientation.y;
 
@@ -182,7 +181,6 @@ export class SoundEffect implements Tool {
   }
 
   processSound(level: number): void {
-    console.log("lvl: ", level);
     if (level < 0.1) {
       this.effectPoint = null;
       return;
@@ -300,15 +298,6 @@ export class PencilEffect implements Tool {
   }
 
   draw(x: number, y: number): void {
-    /*
-    new BreadthFirst({
-      canvas: this.canvas,
-      color: this.color,
-      pos: [ x, y ],
-      size: this.size,
-      colorEnd: this.colorEnd
-    });
-    */
 
     let radgrad = this.ctx.createRadialGradient(x, y, this.size / 4, x, y, this.size / 2);
     radgrad.addColorStop(0, this.colorStart);
