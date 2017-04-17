@@ -2,6 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
 import { File } from 'ionic-native';
+import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope';
 
 import { GaleriePage } from '../galerie/galerie';
 import { UTILS } from '../../components/utils';
@@ -12,7 +13,8 @@ import { Tool, OrientationEffect, SoundEffect, SprayEffect, PencilEffect } from 
 
 @Component({
   selector: 'page-draw',
-  templateUrl: 'draw.html'
+  templateUrl: 'draw.html',
+  providers: [Gyroscope]
 })
 export class DrawPage implements AfterViewInit {
   private galeriePage;
@@ -40,7 +42,8 @@ export class DrawPage implements AfterViewInit {
   private currentCanvas: HTMLCanvasElement;
   private history: Array<string>;
 
-  constructor(private navCtrl: NavController, private params: NavParams) {
+  constructor(private navCtrl: NavController, private params: NavParams,
+              private gyro: Gyroscope) {
     this.objectImg$ = this.params.get("object");
     this.galeriePage = GaleriePage;
     this.history = new Array<string>();
@@ -304,7 +307,7 @@ export class DrawPage implements AfterViewInit {
 
     switch (this.tool$) {
       case UTILS.TOOLS.ORIENTATION:
-        this.currentTool = new OrientationEffect();
+        this.currentTool = new OrientationEffect(this.gyro);
         break;
       case UTILS.TOOLS.SOUND:
         this.currentTool = new SoundEffect();

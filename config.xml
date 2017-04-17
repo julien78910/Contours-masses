@@ -42,11 +42,11 @@
     <plugin name="cordova-plugin-device" spec="1.1.4" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-gyroscope" spec="~0.1.4" />
-    <plugin name="cordova-plugin-device-orientation" spec="~1.0.6" />
     <plugin name="cordova-plugin-audioinput" spec="~0.3.0" />
     <plugin name="cordova-plugin-file" spec="~4.3.2" />
     <plugin name="cordova-plugin-wkwebview-engine" spec="https://github.com/driftyco/cordova-plugin-wkwebview-engine.git" />
     <plugin name="cordova-plugin-media-capture" spec="~1.4.2">
         <variable name="MICROPHONE_USAGE_DESCRIPTION" value="Allow to use micro ?" />
     </plugin>
+    <plugin name="cordova-plugin-device-orientation" spec="~1.0.6" />
 </widget>
