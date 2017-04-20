@@ -2,7 +2,9 @@ import { BreadthFirst } from './breadth';
 import { Point } from '../models/point';
 import { UTILS } from './utils';
 import { Audio } from './audio';
-import { DeviceOrientation } from 'ionic-native';
+import { DeviceOrientation, DeviceOrientationCompassHeading } from '@ionic-native/device-orientation';
+import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope';
+import { Subscription } from 'rxjs/Subscription';
 
 declare var gyro, THREE;
 
@@ -23,15 +25,23 @@ export class OrientationEffect implements Tool {
   private colorStart = 'rgba(96, 126, 198, 1)';
   private colorMiddle = 'rgba(120, 80, 150, 0.5)';
   private colorEnd = 'rgba(145, 42, 124, 0)';
+<<<<<<< HEAD
   private effectColor = [ 255, 15, 55 ];
   private size = 450;
+=======
+  private effectColor = 'rgb(255, 153, 255)';
+  private effectSize = 20;
+  private size = 50;
+>>>>>>> 163d6ce75855604668ab482d520d07ae3292440d
   private points = [];
   private effectEndListener: ()=>void;
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
-  private  gyroscope = (<any>navigator).gyroscope;
   private timeout: number;
   private effectDuration: number = 5000;
+  private subscription: Subscription;
+
+  constructor(private gyroscope: Gyroscope) {}
 
   addEffectEndListener(callback: ()=>void): void {
     this.effectEndListener = callback;
@@ -43,15 +53,6 @@ export class OrientationEffect implements Tool {
   }
 
   draw(x: number, y: number): void {
-    /*
-    new BreadthFirst({
-      canvas: this.canvas,
-      color: this.color,
-      pos: [ x, y ],
-      size: this.size,
-      colorEnd: this.colorEnd
-    });
-    */
 
     let radgrad = this.ctx.createRadialGradient(x, y, 10, x, y,20);
     radgrad.addColorStop(0, this.colorStart);
@@ -65,29 +66,6 @@ export class OrientationEffect implements Tool {
 
   endDraw(): void {
 
-  }
-
-
-  computeQuaternionFromEulers(alpha, beta, gamma) {
-  	var x = beta * Math.PI / 180 ; // beta value
-  	var y = gamma  * Math.PI / 180; // gamma value
-  	var z = alpha  * Math.PI / 180 ; // alpha value
-
-  	//precompute to save on processing time
-  	var cX = Math.cos( x/2 );
-  	var cY = Math.cos( y/2 );
-  	var cZ = Math.cos( z/2 );
-  	var sX = Math.sin( x/2 );
-  	var sY = Math.sin( y/2 );
-  	var sZ = Math.sin( z/2 );
-
-  	var w = cX * cY * cZ - sX * sY * sZ;
-  	var x = sX * cY * cZ - cX * sY * sZ;
-  	var y = cX * sY * cZ + sX * cY * sZ;
-  	var z = cX * cY * sZ + sX * sY * cZ;
-
-
-    return new THREE.Quaternion(x, y, z, w);
   }
 
   selectPoints(): Array<any>{
@@ -104,31 +82,46 @@ export class OrientationEffect implements Tool {
 
   applyEffect(canvas: HTMLCanvasElement): void {
     this.canvas = canvas;
-    var selected = this.selectPoints();
-    gyro.calibrate();
-    gyro.startTracking((o) => {
-      var q = this.computeQuaternionFromEulers(o.alpha, o.beta, o.gamma);
-      var vector = new THREE.Vector3(0, 0, 1);
+    let selected = this.selectPoints();
+    let ax = 0;
+    let ay = 0;
+    let ctx = this.canvas.getContext("2d");
 
-      vector.applyQuaternion(q);
+    let options: GyroscopeOptions = {
+       frequency: 100
+    };
 
-      for (var i = 0; i < selected.length; ++i) {
-        var p = selected[i];
+    this.subscription = this.gyroscope.watch(options)
+    .subscribe((orientation: GyroscopeOrientation) => {
+      ax += orientation.x;
+      ay += orientation.y;
 
-        p.x += Math.floor(UTILS.getRandomInt(5, 15) * vector.y);
-        p.y += Math.floor(UTILS.getRandomInt(5, 15) * vector.x);
+      for (let i = 0; i < selected.length; ++i) {
+        let p = selected[i];
+        let oldP = {x: p.x, y: p.y};
+        p.x += Math.floor(2 * ax);
+        p.y -= Math.floor(2 * ay);
 
-        const breadthFirst = new BreadthFirst({
-          canvas: this.canvas,
-          color: this.effectColor,
-          pos: [ p.x, p.y ],
-          size: this.size
-        });
+        let dist = Math.sqrt(Math.pow(oldP.x - p.x, 2) + Math.pow(oldP.y - p.y, 2));
+        let angle = Math.atan2(p.x - oldP.x, p.y - oldP.y );
+        for (let j = 0; j < dist; ++j) {
+          let x = oldP.x + (Math.sin(angle) * j);
+          let y = oldP.y + (Math.cos(angle) * j);
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate(Math.PI * 180 / UTILS.getRandomInt(0, 180));
+          ctx.fillStyle = this.effectColor;
+          ctx.fillRect(0, 0, this.effectSize, 1.5);
+          ctx.restore();
+        }
       }
     });
-    gyro.frequency = 100;
+
+
     this.timeout = setTimeout(() => {
-      gyro.stopTracking();
+      this.subscription.unsubscribe();
+      this.effectEndListener();
+      this.points = null;
     }, this.effectDuration);
   }
 
@@ -145,12 +138,19 @@ export class SoundEffect implements Tool {
   private colorStart = 'rgba(96, 126, 198, 1)';
   private colorMiddle = 'rgba(120, 80, 150, 0.5)';
   private colorEnd = 'rgba(145, 42, 124, 0)';
+<<<<<<< HEAD
   private effectColor = [ 5, 255, 105 ];
   private size = 250;
+=======
+  private effectColor = '#ff90ff';
+  private size = 150;
+  private effectSize = 100;
+>>>>>>> 163d6ce75855604668ab482d520d07ae3292440d
   private waitTime = 50;
   private effectDuration = 5000; // 5s
   private timeout: number;
   private points = [];
+  private effectPoint;
   private effectEndListener: ()=>void;
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
@@ -166,15 +166,6 @@ export class SoundEffect implements Tool {
   }
 
   draw(x: number, y: number): void {
-    /*
-    new BreadthFirst({
-      canvas: this.canvas,
-      color: this.color,
-      pos: [ x, y ],
-      size: this.size,
-      colorEnd: this.colorEnd
-    });
-    */
     let radgrad = this.ctx.createRadialGradient(x, y, 10, x, y,20);
     radgrad.addColorStop(0, this.colorStart);
     radgrad.addColorStop(0.5, this.colorMiddle);
@@ -195,26 +186,31 @@ export class SoundEffect implements Tool {
     this.timeout = setTimeout(() => {
       this.audio.stop();
       this.effectEndListener();
+      this.points = null;
     }, this.effectDuration);
   }
 
   processSound(level: number): void {
-    console.log("lvl: ", level);
-    if (level < 0.1)
+    if (level < 0.1) {
+      this.effectPoint = null;
       return;
+    }
 
-    var i = UTILS.getRandomInt(0, this.points.length - 1);
-    var p = this.points[i];
-    var size = Math.floor(level * this.size);
+    if (!this.effectPoint) {
+      if(!this.points) return;
+      var i = UTILS.getRandomInt(0, this.points.length - 1);
+      this.effectPoint = this.points[i];
+    }
 
-    new BreadthFirst({
-      canvas: this.canvas,
-      color: this.effectColor,
-      pos: [ p.x, p.y ],
-      size: size
-    });
+    var size = Math.floor(level * this.effectSize);
 
-    this.audio.pause(1000);
+    var ctx = this.canvas.getContext("2d");
+    ctx.save();
+    ctx.translate(this.effectPoint.x, this.effectPoint.y);
+    ctx.rotate(Math.PI * 180 / UTILS.getRandomInt(0, 180));
+    ctx.fillStyle = this.effectColor;
+    ctx.fillRect(0, 0, size, 1.5);
+    ctx.restore();
   }
 
   getPoints(): Array<Point> {
@@ -280,6 +276,7 @@ export class SprayEffect implements Tool {
 
   applyEffect(canvas: HTMLCanvasElement): void {
     this.effectEndListener();
+    this.points = null;
   }
 
   getPoints(): Array<Point> {
@@ -311,15 +308,6 @@ export class PencilEffect implements Tool {
   }
 
   draw(x: number, y: number): void {
-    /*
-    new BreadthFirst({
-      canvas: this.canvas,
-      color: this.color,
-      pos: [ x, y ],
-      size: this.size,
-      colorEnd: this.colorEnd
-    });
-    */
 
     let radgrad = this.ctx.createRadialGradient(x, y, this.size / 4, x, y, this.size / 2);
     radgrad.addColorStop(0, this.colorStart);
@@ -337,6 +325,7 @@ export class PencilEffect implements Tool {
 
   applyEffect(canvas: HTMLCanvasElement): void {
     this.effectEndListener();
+    this.points = null;
   }
 
   getPoints(): Array<Point> {

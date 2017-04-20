@@ -2,7 +2,7 @@ declare var audioinput;
 
 export class Audio {
     private end = false;
-    private waitTime = 50;
+    private waitTime = 10;
     private start = Date.now();
     private lastUpdate: Date;
     private processSound: (level: number)=>void;
@@ -31,7 +31,7 @@ export class Audio {
         return;
       }
 
-      this.waitTime = 50;
+      this.waitTime = 10;
 
       var array =  new Uint8Array(analyser.frequencyBinCount);
       analyser.getByteFrequencyData(array);
