@@ -23,8 +23,8 @@ export class OrientationEffect implements Tool {
   private colorStart = 'rgba(96, 126, 198, 1)';
   private colorMiddle = 'rgba(120, 80, 150, 0.5)';
   private colorEnd = 'rgba(145, 42, 124, 0)';
-  private effectColor = [ 255, 153, 255 ];
-  private size = 50;
+  private effectColor = [ 255, 15, 55 ];
+  private size = 450;
   private points = [];
   private effectEndListener: ()=>void;
   private canvas: HTMLCanvasElement;
@@ -145,8 +145,8 @@ export class SoundEffect implements Tool {
   private colorStart = 'rgba(96, 126, 198, 1)';
   private colorMiddle = 'rgba(120, 80, 150, 0.5)';
   private colorEnd = 'rgba(145, 42, 124, 0)';
-  private effectColor = [ 255, 153, 255 ];
-  private size = 150;
+  private effectColor = [ 5, 255, 105 ];
+  private size = 250;
   private waitTime = 50;
   private effectDuration = 5000; // 5s
   private timeout: number;
@@ -295,7 +295,7 @@ export class PencilEffect implements Tool {
   private colorStart = 'rgba(96, 126, 198, 1)';
   private colorMiddle = 'rgba(120, 80, 150, 0.5)';
   private colorEnd = 'rgba(145, 42, 124, 0)';
-  private size = 40;
+  private size = 100;
   private points = [];
   private effectEndListener: ()=>void;
   private canvas: HTMLCanvasElement;

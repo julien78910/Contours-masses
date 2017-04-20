@@ -1,76 +1,9 @@
-/* ________________________________________ App Beaubourg _________________________________ */
 
 
 
 
 
-/* ________________________________________ Général _________________________________ */
-/*
-body
-
-{
-
-overflow: hidden !important;margin:0;
-
-padding: 0;
-
-height: 100%;
-
-width: 100%;
-
-}
-
-
-
-
-
-
-
-#container
-
-{
-
-  display: none;
-
-}
-
-
-
-#redimensionner-moi
-
-{
-
-    color: white;
-
-    font-family: 'Hammersmith', sans-serif;
-
-    display: block !important;
-
-    font-size: 1.2em;
-
-    text-align: center;
-
-    width: 1280px;
-
-    height: 800px;
-
-    background-color: black;
-
-    line-height: 0.5em;
-
-    margin-top: 0;
-
-    padding-top: 25%;
-
-    position: absolute;
-
-}
-
-*/
-
-
-
-
+@media screen and (min-width: 1270px) and (max-width: 1290px){
 
 
 
@@ -81,7 +14,7 @@ width: 100%;
   display: none !important;
 
 }
-
+}
 
 
 #container
@@ -1555,25 +1488,6 @@ h1
 
 
 
-.background-opacite
-
-{
-
-    width: 100%;
-
-    height: 100%;
-
-    background:url('../assets/img/fond.jpg');
-
-    position: absolute;
-
-    opacity:0.6;
-
-}
-
-
-
-
 
 
 
@@ -2251,7 +2165,7 @@ article.info-outils {
 
     height: 7.5%;
 
-    bottom: 0;
+    bottom: 5%;
 
     z-index: 5000000;
 }
@@ -2266,7 +2180,7 @@ article.info-outils {
 
   right: 7%;
 
-  bottom: 50%;
+  bottom: 5%;
 
   margin-left:50px;
 
@@ -2593,3 +2507,1114 @@ ul#grille-galerie2 li img
   margin: auto;
 
 }
+
+
+/* ________________________________________ App Beaubourg _________________________________ */
+
+
+
+
+
+/* ________________________________________ Général _________________________________ */
+/*
+body
+
+{
+
+overflow: hidden !important;margin:0;
+
+padding: 0;
+
+height: 100%;
+
+width: 100%;
+
+}
+
+
+
+
+
+
+
+#container
+
+{
+
+  display: none;
+
+}
+
+
+
+#redimensionner-moi
+
+{
+
+    color: white;
+
+    font-family: 'Hammersmith', sans-serif;
+
+    display: block !important;
+
+    font-size: 1.2em;
+
+    text-align: center;
+
+    width: 1280px;
+
+    height: 800px;
+
+    background-color: black;
+
+    line-height: 0.5em;
+
+    margin-top: 0;
+
+    padding-top: 25%;
+
+    position: absolute;
+
+}
+
+*/
+
+
+@media screen and (min-width: 1015px) and (max-width: 1030px){
+
+  .outils button:nth-child(5n) {
+      margin-left: 330px;
+  }
+
+
+  /* ________________________________________ (C)ontours & Masses _________________________________ */
+
+
+
+  .C-1-img
+  {
+  	 -webkit-animation-name: C-A-img;
+  		-moz-animation-name: C-A-img;
+  		-moz-animation-name: C-A-img;
+  		-o-animation-name: C-A-img;
+  		animation-name: C-A-img;
+  }
+
+
+
+  @keyframes C-A-img
+
+  {
+
+  from {   transform:translate(212%,155%) scale(0.40);opacity: 0;}
+
+  to {transform:translate(25%,81%) scale(0.70);opacity: 0.6;}
+
+  }
+
+
+
+
+
+  .C-1-1-img
+
+  {
+   		animation-name: C-A-A-img;
+  }
+
+
+
+  @keyframes C-A-A-img
+
+  {
+         from {   transform:translate(212%,155%) scale(0.40);opacity: 0.6;}
+  to {transform:translate(25%,81%) scale(0.70);opacity: 0;}
+  }
+
+
+
+
+
+  /* ________________________________________ C(o)ntours & Masses _________________________________ */
+
+
+
+  .O-1-img
+
+  {
+
+      animation-name: O-A-img;
+
+  }
+
+
+
+  @keyframes O-A-img
+
+  {
+
+  from {
+
+      transform:translate(195%,155%) scale(0.40);
+
+      opacity: 0;}
+
+  to {
+
+      transform:translate(90%,114%) scale(0.70);
+
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+
+
+  .O-1-1-img
+
+  {
+
+      animation-name: O-A-A-img;
+
+  }
+
+
+
+  @keyframes O-A-A-img
+
+  {
+
+  from {
+
+      transform:translate(195%,155%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(90%,114%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+  /* ________________________________________ Co(n)tours & Masses _________________________________ */
+
+
+
+  .N-1-img
+
+  {
+
+      animation-name: N-A-img;
+
+  }
+
+
+
+  @keyframes N-A-img
+
+  {
+
+  from {
+
+       transform:translate(335%,163%) scale(0.40);
+
+      opacity: 0;}
+
+  to {
+
+      transform:translate(245%,102%) scale(0.70);
+
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+  .N-1-1-img
+
+  {
+
+      animation-name: N-A-A-img;
+
+  }
+
+
+
+  @keyframes N-A-A-img
+
+  {
+
+  from {
+
+       transform:translate(335%,163%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(245%,102%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+  /* ________________________________________ Con(t)ours & Masses _________________________________ */
+
+
+
+  .T-1-img
+
+  {
+
+      animation-name: T-A-img;
+
+  }
+
+
+
+  @keyframes T-A-img
+
+  {
+
+  from {
+
+
+  	    transform:translate(403%,157%) scale(0.40);
+
+      opacity: 0;}
+
+  to {
+
+      transform:translate(365%,42%) scale(0.70);
+
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+  .T-1-1-img
+
+  {
+
+      animation-name: T-A-A-img;
+
+  }
+
+
+
+  @keyframes T-A-A-img
+
+  {
+
+  from {
+
+      transform:translate(403%,157%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(365%,42%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+  /* ________________________________________ Cont(o)urs & Masses _________________________________ */
+
+
+
+  .O-2-img
+
+  {
+
+      animation-name: O-B-img;
+
+
+
+  }
+
+
+
+  @keyframes O-B-img
+
+  {
+
+  from {
+
+  	    transform:translate(308%,157%) scale(0.40);
+
+      opacity: 0;}
+
+  to {
+
+      transform:translate(325%,132%) scale(0.70);
+
+      opacity: 0.6;}
+
+  }
+
+
+
+  .O-2-1-img
+
+  {
+
+      animation-name: O-B-A-img;
+
+  }
+
+
+
+  @keyframes O-B-A-img
+
+  {
+
+  from {
+
+      transform:translate(308%,157%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(325%,132%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+
+
+  /* ________________________________________ Conto(u)rs & Masses _________________________________ */
+
+
+
+  .U-1-img
+
+  {
+
+      animation-name: U-A-img;
+
+  }
+
+
+
+  @keyframes U-A-img
+
+  {
+
+  from {
+      transform:translate(470%,157%) scale(0.40);
+
+      opacity:0;}
+
+  to {
+
+      transform:translate(540%,98%) scale(0.70);
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+
+
+  .U-1-1-img
+
+  {
+
+      animation-name: U-A-A-img;
+
+  }
+
+
+
+  @keyframes U-A-A-img
+
+  {
+
+  from {
+
+      transform:translate(470%,157%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(540%,98%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+  /* ________________________________________ Contou(r)s & Masses _________________________________ */
+
+
+
+  .R-1-img
+
+  {
+
+      animation-name: R-A-img;
+
+
+
+  }
+
+
+
+  @keyframes R-A-img
+
+  {
+
+  from {
+      transform:translate(560%,157%) scale(0.40);
+      opacity: 0;}
+
+  to {
+
+      transform:translate(680%,146%) scale(0.70);
+
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+  .R-1-1-img
+
+  {
+
+      animation-name: R-A-A-img;
+
+  }
+
+
+
+  @keyframes R-A-A-img
+
+  {
+
+  from {
+
+      transform:translate(560%,157%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(680%,146%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+
+
+  /* ________________________________________ Contour(s) & Masses _________________________________ */
+
+
+
+  .S-1-img
+
+  {
+
+      animation-name: S-A-img;
+
+
+
+  }
+
+
+
+  @keyframes S-A-img
+
+  {
+
+  from {
+
+      transform:translate(610%,155%) scale(0.40);
+
+      opacity: 0;}
+
+  to {
+
+      transform:translate(790%,75%) scale(0.70);
+
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+  .S-1-1-img
+
+  {
+
+      animation-name: S-A-A-img;
+
+  }
+
+
+
+  @keyframes S-A-A-img
+
+  {
+
+  from {
+
+      transform:translate(610%,155%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(790%,75%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+
+
+  /* ________________________________________ Contours (&) Masses _________________________________ */
+
+
+
+  .et-1-img
+
+  {
+
+      animation-name: etA-img;
+
+  }
+
+
+
+  @keyframes etA-img
+
+  {
+
+  from {
+      transform:translate(182%,214%) scale(0.40);
+  		opacity: 0;}
+
+  to {
+
+      transform:translate(63%,290%) scale(0.70);
+
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+  .et-1-1-img
+
+  {
+
+      animation-name: etA-A-img;
+
+  }
+
+
+
+  @keyframes etA-A-img
+
+  {
+
+  from {
+
+      transform:translate(182%,214%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(63%,290%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+
+
+  /* ________________________________________ Contours & (M)asses _________________________________ */
+
+
+
+  .M-1-img
+
+  {
+
+      animation-name: M-A-img;
+
+  }
+
+
+
+  @keyframes M-A-img
+
+  {
+
+  from {
+
+      transform:translate(280%,220%) scale(0.40);
+
+      opacity: 0;}
+
+  to {
+
+      transform:translate(200%,355%) scale(0.70);
+
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+  .M-1-1-img
+
+  {
+
+      animation-name: M-A-A-img;
+
+  }
+
+
+
+  @keyframes M-A-A-img
+
+  {
+
+  from {
+
+      transform:translate(280%,220%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(200%,355%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+  /* ________________________________________ Contours & M(a)sses _________________________________ */
+
+
+
+  .A-1-img
+
+  {
+
+      animation-name: A-A-img;
+
+  }
+
+
+
+  @keyframes A-A-img
+
+  {
+
+  from {
+
+  	transform:translate(311%,220%) scale(0.40);
+
+  	opacity: 0;}
+
+  to {
+
+      transform:translate(285%,300%) scale(0.70);
+
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+  .A-1-1-img
+
+  {
+
+      animation-name: A-A-A-img;
+
+  }
+
+
+
+  @keyframes A-A-A-img
+
+  {
+
+  from {
+
+      transform:translate(311%,220%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(285%,300%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+
+
+  /* ________________________________________ Contours & Ma(s)ses _________________________________ */
+
+
+
+  .S-2-img
+
+  {
+
+      animation-name: S-B-img;
+
+  }
+
+
+
+  @keyframes S-B-img
+
+  {
+
+  from {
+
+      transform:translate(460%,214%) scale(0.40);
+
+      opacity: 0;}
+
+  to {
+
+      transform:translate(485%,355%) scale(0.70);
+
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+  .S-2-2-img
+
+  {
+
+      animation-name: S-B-B-img;
+
+  }
+
+
+
+  @keyframes S-B-B-img
+
+  {
+
+  from {
+
+      transform:translate(460%,214%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(485%,355%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+  /* ________________________________________ Contours & Mas(s)es _________________________________ */
+
+
+
+  .S-3-img
+
+  {
+
+      animation-name: S-C-img;
+
+  }
+
+
+
+  @keyframes S-C-img
+
+  {
+
+  from {
+
+      transform:translate(500%,214%) scale(0.40);
+
+      opacity: 0;}
+
+  to {
+
+      transform:translate(580%,305%) scale(0.70);
+
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+  .S-3-3-img
+
+  {
+
+      animation-name: S-C-C-img;
+
+  }
+
+
+
+  @keyframes S-C-C-img
+
+  {
+
+  from {
+
+      transform:translate(500%,214%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(580%,305%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+
+
+  /* ________________________________________ Contours & Mass(e)s _________________________________ */
+
+
+
+  .E-1-img
+
+  {
+
+      animation-name: E-A-img;
+
+  }
+
+
+
+  @keyframes E-A-img
+
+  {
+
+  from {
+
+      transform:translate(716%,220%) scale(0.40);
+
+      opacity: 0;}
+
+  to {
+
+      transform:translate(870%,360%) scale(0.70);
+
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+  .E-1-1-img
+
+  {
+
+      animation-name: E-A-A-img;
+
+  }
+
+
+
+  @keyframes E-A-A-img
+
+  {
+
+  from {
+
+      transform:translate(716%,220%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(870%,360%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+
+
+
+
+
+
+  /* ________________________________________ Contours & Masse(s) _________________________________ */
+
+
+
+  .S-4-img
+
+  {
+
+      animation-name: S-D-img;
+
+  }
+
+
+
+  @keyframes S-D-img
+
+  {
+
+  from {
+
+      transform:translate(600%,214%) scale(0.40);
+
+      opacity: 0;}
+
+  to {
+
+      transform:translate(785%,375%) scale(0.70);
+
+      opacity: 0.6;
+
+      }
+
+  }
+
+
+
+  .S-4-4-img
+
+  {
+
+      animation-name: S-D-D-img;
+
+  }
+
+
+
+  @keyframes S-D-D-img
+
+  {
+
+  from {
+
+      transform:translate(600%,214%) scale(0.40);
+
+      opacity: 0.6;}
+
+  to {
+
+      transform:translate(785%,375%) scale(0.70);
+
+      opacity: 0;
+
+      }
+
+  }
+
+article.info-outils
+{
+  left: 12%;
+}
+
+.outils button:nth-child(5n) {
+    margin-left: 400px;
+}
+
+.outils button {
+    margin-right: 30px;
+}
+
+  }

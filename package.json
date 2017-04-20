@@ -33,13 +33,28 @@
     "typescript": "^2.0.9"
   },
   "cordovaPlugins": [
+    "ionic-plugin-keyboard",
     "cordova-plugin-whitelist",
     "cordova-plugin-console",
     "cordova-plugin-statusbar",
     "cordova-plugin-device",
     "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard"
+    "cordova-plugin-gyroscope",
+    "cordova-plugin-device-orientation",
+    "cordova-plugin-audioinput",
+    "cordova-plugin-compat",
+    "cordova-plugin-file",
+    {
+      "locator": "https://github.com/driftyco/cordova-plugin-wkwebview-engine.git",
+      "id": "cordova-plugin-wkwebview-engine"
+    }
   ],
-  "cordovaPlatforms": [],
+  "cordovaPlatforms": [
+    {
+      "platform": "browser",
+      "version": "",
+      "locator": "browser"
+    }
+  ],
   "description": "pathtime-front: An Ionic project"
 }
