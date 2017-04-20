@@ -25,14 +25,9 @@ export class OrientationEffect implements Tool {
   private colorStart = 'rgba(96, 126, 198, 1)';
   private colorMiddle = 'rgba(120, 80, 150, 0.5)';
   private colorEnd = 'rgba(145, 42, 124, 0)';
-<<<<<<< HEAD
-  private effectColor = [ 255, 15, 55 ];
-  private size = 450;
-=======
-  private effectColor = 'rgb(255, 153, 255)';
+  private effectColor = 'rgb(255, 15, 55)';
   private effectSize = 20;
-  private size = 50;
->>>>>>> 163d6ce75855604668ab482d520d07ae3292440d
+  private size = 450;
   private points = [];
   private effectEndListener: ()=>void;
   private canvas: HTMLCanvasElement;
@@ -138,14 +133,9 @@ export class SoundEffect implements Tool {
   private colorStart = 'rgba(96, 126, 198, 1)';
   private colorMiddle = 'rgba(120, 80, 150, 0.5)';
   private colorEnd = 'rgba(145, 42, 124, 0)';
-<<<<<<< HEAD
-  private effectColor = [ 5, 255, 105 ];
-  private size = 250;
-=======
-  private effectColor = '#ff90ff';
-  private size = 150;
+  private effectColor = '#05ff69';
+  private size = 20;
   private effectSize = 100;
->>>>>>> 163d6ce75855604668ab482d520d07ae3292440d
   private waitTime = 50;
   private effectDuration = 5000; // 5s
   private timeout: number;
