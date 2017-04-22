@@ -28,6 +28,7 @@ export class OrientationEffect implements Tool {
   private effectColor = 'rgb(255, 15, 55)';
   private effectSize = 20;
   private size = 450;
+  private speed = 200; //increase to decrease speed.
   private points = [];
   private effectEndListener: ()=>void;
   private canvas: HTMLCanvasElement;
@@ -72,6 +73,11 @@ export class OrientationEffect implements Tool {
       i += UTILS.getRandomInt(10, 40);
     }
 
+    if (selected.length == 0) {
+      i = UTILS.getRandomInt(0, points.length);
+      selected.push(points[i]);
+    }
+
     return selected;
   }
 
@@ -81,21 +87,27 @@ export class OrientationEffect implements Tool {
     let ax = 0;
     let ay = 0;
     let ctx = this.canvas.getContext("2d");
+    let lastT = 0;
 
     let options: GyroscopeOptions = {
-       frequency: 100
+       frequency: 50
     };
 
     this.subscription = this.gyroscope.watch(options)
     .subscribe((orientation: GyroscopeOrientation) => {
-      ax += orientation.x;
-      ay += orientation.y;
+      ay += orientation.x;
+      ax += orientation.y;
+
+      let t = Date.now();
+      if (t - lastT < this.speed) return;
+
+      lastT = t;
 
       for (let i = 0; i < selected.length; ++i) {
         let p = selected[i];
         let oldP = {x: p.x, y: p.y};
         p.x += Math.floor(2 * ax);
-        p.y -= Math.floor(2 * ay);
+        p.y += Math.floor(2 * ay);
 
         let dist = Math.sqrt(Math.pow(oldP.x - p.x, 2) + Math.pow(oldP.y - p.y, 2));
         let angle = Math.atan2(p.x - oldP.x, p.y - oldP.y );

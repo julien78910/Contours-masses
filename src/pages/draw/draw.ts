@@ -37,6 +37,7 @@ export class DrawPage implements AfterViewInit {
   private startX: number;
   private startY: number;
 
+
   private pieces: Array<Array<HTMLCanvasElement>> = [];
   private pieceToCanvas = new Map<string, Array<HTMLCanvasElement>>();
   private currentCanvas: HTMLCanvasElement;
@@ -75,29 +76,23 @@ export class DrawPage implements AfterViewInit {
   }
 
   assemble$(): void {
-    var offsetTop = 0;
-
     for (var i = 0; i < this.pieces.length; ++i) {
-      var offsetLeft = 0;
-      var height = 0;
-
       for (var j = 0; j < this.pieces[i].length; ++j) {
         var p = this.pieces[i][j];
 
         for (var k = 0; k < this.pieceToCanvas.get(p.id).length; k++) {
           var c = this.pieceToCanvas.get(p.id)[k];
 
-          c.style.top = this.startY + offsetTop - p.offsetTop + "px";
-          c.style.left = this.startX + offsetLeft - p.offsetLeft + "px";
+          let decY = p.offsetTop - (this.startY + (<any>p).startTop);
+          let decX = p.offsetLeft - (this.startX + (<any>p).startLeft);
+          c.style.top = c.offsetTop - decY  + "px";
+          c.style.left = c.offsetLeft - decX  + "px";
         }
-        offsetLeft += p.width;
-        height = p.height;
         this.container.removeChild(p);
       }
-      offsetTop += height;
     }
 
-    this.createFinalImgAndSave();
+    setTimeout(this.createFinalImgAndSave.bind(this), 5500);
   }
 
   back$(): void {
@@ -140,8 +135,11 @@ export class DrawPage implements AfterViewInit {
 
         var piece = this.createPiece(startX, startY, width, height);
 
-        if (piece)
+        if (piece) {
           this.pieces[this.pieces.length - 1].push(piece);
+          (<any>piece).startTop = startY;
+          (<any>piece).startLeft = startX;
+        }
 
         startX += width;
       }
@@ -278,7 +276,6 @@ export class DrawPage implements AfterViewInit {
     this.pieceToCanvas.forEach((value, key, map) => {
       for (var j = 0; j < value.length; ++j) {
         var canvas = value[j];
-        console.log("canvas: ", canvas);
         ctx.drawImage(canvas, canvas.offsetLeft, canvas.offsetTop);
       }
     });
@@ -299,6 +296,44 @@ export class DrawPage implements AfterViewInit {
     });
 
 
+  }
+
+
+  resizeCanvas(canvas: HTMLCanvasElement) : HTMLCanvasElement {
+    let context = canvas.getContext("2d");
+    let endX = 0, endY = 0, startX = canvas.width, startY = canvas.height;
+    let step = 20
+
+    for (let x = 0; x < canvas.width; x += step) {
+      for (let y = 0; y < canvas.height; y += step) {
+        let pixel = context.getImageData(x, y, step, step);
+        for (let i = 0; i < pixel.data.length; i += 4) {
+          if (pixel.data[i + 3] != 0) {
+            if (x < startX) startX = x;
+            if (y < startY) startY = y;
+            if (x > endX) endX = x;
+            if (y > endY) endY = y;
+          }
+        }
+      }
+    }
+
+    let piece = <HTMLCanvasElement> document.createElement("canvas");
+    let id = UTILS.getNewId();
+    let w = endX - startX, h = endY - startY;
+
+    piece.width = w;
+    piece.height = h;
+    piece.style.position = "absolute";
+    piece.style.left = startX + "px";
+    piece.style.top = startY + "px";
+    piece.style.pointerEvents = "none";
+    piece.className += "canvas";
+    piece.getContext("2d").drawImage(canvas, startX, startY, w, h, 0, 0, w, h);
+    piece.setAttribute("id", String(id));
+
+    this.container.appendChild(piece);
+    return piece;
   }
 
   /***** Event Handlers *****/
@@ -346,15 +381,14 @@ export class DrawPage implements AfterViewInit {
       return;
     }
 
-    this.history.push(this.currentCanvas.id);
-    this.pieceToCanvas.get(piece.id).push(this.currentCanvas);
-    this.currentCanvas = this.addPieceCanvas();
     this.currentCanvas.style.pointerEvents = "none";
     this.currentTool.addEffectEndListener(() => {
       this.currentTool = null;
       if (!this.isCanvasEmpty(this.currentCanvas)) {
-        this.history.push(this.currentCanvas.id);
-        this.pieceToCanvas.get(piece.id).push(this.currentCanvas);
+        let c = this.resizeCanvas(this.currentCanvas);
+        this.history.push(c.id);
+        this.pieceToCanvas.get(piece.id).push(c);
+        this.container.removeChild(this.currentCanvas);
         this.currentCanvas = this.addPieceCanvas();
       }
     });

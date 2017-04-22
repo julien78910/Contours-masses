@@ -21,7 +21,6 @@ export class GaleriePage implements OnInit {
       entries.forEach(e => {
         File.readAsText((<any>File).dataDirectory + 'images', e.name)
         .then(data => {
-          console.log(data);
           this.images.push(data.toString());
         });
       }, this);
