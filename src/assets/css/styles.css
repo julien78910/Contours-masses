@@ -1,19 +1,11 @@
 
 
-
-
-
-@media screen and (min-width: 1270px) and (max-width: 1290px){
-
-
-
 #redimensionner-moi
 
 {
 
   display: none !important;
 
-}
 }
 
 
@@ -1601,6 +1593,7 @@ h4
 
 
 
+
 /* _________________________________________h2 cliquez pour continuer __________________________________ */
 
 
@@ -2509,78 +2502,6 @@ ul#grille-galerie2 li img
 }
 
 
-/* ________________________________________ App Beaubourg _________________________________ */
-
-
-
-
-
-/* ________________________________________ Général _________________________________ */
-/*
-body
-
-{
-
-overflow: hidden !important;margin:0;
-
-padding: 0;
-
-height: 100%;
-
-width: 100%;
-
-}
-
-
-
-
-
-
-
-#container
-
-{
-
-  display: none;
-
-}
-
-
-
-#redimensionner-moi
-
-{
-
-    color: white;
-
-    font-family: 'Hammersmith', sans-serif;
-
-    display: block !important;
-
-    font-size: 1.2em;
-
-    text-align: center;
-
-    width: 1280px;
-
-    height: 800px;
-
-    background-color: black;
-
-    line-height: 0.5em;
-
-    margin-top: 0;
-
-    padding-top: 25%;
-
-    position: absolute;
-
-}
-
-*/
-
-
-@media screen and (min-width: 1015px) and (max-width: 1030px){
 
   .outils button:nth-child(5n) {
       margin-left: 330px;
@@ -3610,11 +3531,9 @@ article.info-outils
 }
 
 .outils button:nth-child(5n) {
-    margin-left: 400px;
+    margin-left: 350px;
 }
 
 .outils button {
     margin-right: 30px;
 }
-
-  }

@@ -22,13 +22,12 @@ export interface Tool {
 /***** Orientation Effect *****/
 
 export class OrientationEffect implements Tool {
-  private colorStart = 'rgba(96, 126, 198, 1)';
-  private colorMiddle = 'rgba(120, 80, 150, 0.5)';
-  private colorEnd = 'rgba(145, 42, 124, 0)';
-  private effectColor = 'rgb(255, 15, 55)';
-  private effectSize = 20;
+  private colorStart = 'rgba(51, 204, 255, 1)';
+  private colorMiddle = 'rgba(255, 153, 255, 0.5)';
+  private colorEnd = 'rgba(255, 153, 255, 0)';
+  private effectColor = 'rgb(255, 76, 104)';
+  private effectSize = 70;
   private size = 450;
-  private speed = 200; //increase to decrease speed.
   private points = [];
   private effectEndListener: ()=>void;
   private canvas: HTMLCanvasElement;
@@ -73,11 +72,6 @@ export class OrientationEffect implements Tool {
       i += UTILS.getRandomInt(10, 40);
     }
 
-    if (selected.length == 0) {
-      i = UTILS.getRandomInt(0, points.length);
-      selected.push(points[i]);
-    }
-
     return selected;
   }
 
@@ -87,27 +81,21 @@ export class OrientationEffect implements Tool {
     let ax = 0;
     let ay = 0;
     let ctx = this.canvas.getContext("2d");
-    let lastT = 0;
 
     let options: GyroscopeOptions = {
-       frequency: 50
+       frequency: 100
     };
 
     this.subscription = this.gyroscope.watch(options)
     .subscribe((orientation: GyroscopeOrientation) => {
-      ay += orientation.x;
-      ax += orientation.y;
-
-      let t = Date.now();
-      if (t - lastT < this.speed) return;
-
-      lastT = t;
+      ax += orientation.x;
+      ay += orientation.y;
 
       for (let i = 0; i < selected.length; ++i) {
         let p = selected[i];
         let oldP = {x: p.x, y: p.y};
         p.x += Math.floor(2 * ax);
-        p.y += Math.floor(2 * ay);
+        p.y -= Math.floor(2 * ay);
 
         let dist = Math.sqrt(Math.pow(oldP.x - p.x, 2) + Math.pow(oldP.y - p.y, 2));
         let angle = Math.atan2(p.x - oldP.x, p.y - oldP.y );
@@ -142,12 +130,12 @@ export class OrientationEffect implements Tool {
 /***** Sound Effect *****/
 
 export class SoundEffect implements Tool {
-  private colorStart = 'rgba(96, 126, 198, 1)';
-  private colorMiddle = 'rgba(120, 80, 150, 0.5)';
-  private colorEnd = 'rgba(145, 42, 124, 0)';
-  private effectColor = '#05ff69';
-  private size = 20;
-  private effectSize = 100;
+  private colorStart = 'rgba(255, 76, 104, 1)';
+  private colorMiddle = 'rgba(255, 76, 104, 0.5)';
+  private colorEnd = 'rgba(102, 153, 51, 0)';
+  private effectColor = '#ff99ff';
+  private size = 50;
+  private effectSize = 150;
   private waitTime = 50;
   private effectDuration = 5000; // 5s
   private timeout: number;
@@ -291,9 +279,9 @@ export class SprayEffect implements Tool {
 /***** Pencil Effect *****/
 
 export class PencilEffect implements Tool {
-  private colorStart = 'rgba(96, 126, 198, 1)';
-  private colorMiddle = 'rgba(120, 80, 150, 0.5)';
-  private colorEnd = 'rgba(145, 42, 124, 0)';
+  private colorStart = 'rgba(102, 153, 51, 1)';
+  private colorMiddle = 'rgba(102, 153, 51, 0.5)';
+  private colorEnd = 'rgba(102, 153, 51, 0)';
   private size = 100;
   private points = [];
   private effectEndListener: ()=>void;
