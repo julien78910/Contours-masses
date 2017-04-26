@@ -2223,9 +2223,10 @@ span
 
     overflow-y: visible !important;
 
-    background:url('../assets/img/fond-galerie.png');
+    background:url('../assets/img/fond.jpg’);
 
 background-attachment:fixed;
+Background-repeat:repeat;
 
 }
 
@@ -2235,7 +2236,6 @@ background-attachment:fixed;
 
 {
 
-        background:url('../assets/img/fond-galerie.png');
 
       height: 42.5%;
 
@@ -2343,7 +2343,7 @@ ul#grille-galerie2
 
     height: 500px;
 
-    margin-top:22.5%;
+    margin-top:30%;
 
     position: absolute;
 
