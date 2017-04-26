@@ -2223,10 +2223,10 @@ span
 
     overflow-y: visible !important;
 
-    background:url('../assets/img/fond.jpg’);
+    background:url("../assets/img/fond.jpg");
 
 background-attachment:fixed;
-Background-repeat:repeat;
+background-repeat:repeat;
 
 }
 
