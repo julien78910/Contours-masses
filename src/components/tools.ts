@@ -131,10 +131,10 @@ export class OrientationEffect implements Tool {
 
 export class SoundEffect implements Tool {
   private colorStart = 'rgba(255, 76, 104, 1)';
-  private colorMiddle = 'rgba(255, 76, 104, 0.5)';
+  private colorMiddle = 'rgba(102, 153, 51, 0.5)';
   private colorEnd = 'rgba(102, 153, 51, 0)';
   private effectColor = '#ff99ff';
-  private size = 50;
+  private size = 120;
   private effectSize = 150;
   private waitTime = 50;
   private effectDuration = 5000; // 5s
@@ -279,9 +279,9 @@ export class SprayEffect implements Tool {
 /***** Pencil Effect *****/
 
 export class PencilEffect implements Tool {
-  private colorStart = 'rgba(102, 153, 51, 1)';
-  private colorMiddle = 'rgba(102, 153, 51, 0.5)';
-  private colorEnd = 'rgba(102, 153, 51, 0)';
+  private colorStart = 'rgba(96, 126,198, 1)';
+  private colorMiddle = 'rgba(96, 126, 198, 0.5)';
+  private colorEnd = 'rgba(96, 126, 198, 0)';
   private size = 100;
   private points = [];
   private effectEndListener: ()=>void;
